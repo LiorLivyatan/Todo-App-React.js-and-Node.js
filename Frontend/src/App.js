@@ -38,7 +38,9 @@ function App() {
       const response = await axios.patch(`${baseURL}/api/todos/${todo.id}`);
       setTodosList((prevList) =>
         prevList.map((prev) =>
-          prev.id === todo.id ? { ...prev, isComplete: !prev.isComplete } : prev
+          prev.id === response.data.id
+            ? { ...prev, isComplete: !prev.isComplete }
+            : prev
         )
       );
     } catch (error) {
